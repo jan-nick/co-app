@@ -1,0 +1,52 @@
+<div class="wrapper">
+  <nz-tabset>
+    <nz-tab [nzTitle]="'pages.login.login_tab' | translate">
+      <form
+        nz-form
+        [formGroup]="formGroup"
+        class="login-form"
+        (ngSubmit)="submit()"
+      >
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group nzPrefixIcon="user">
+              <input
+                [placeholder]="'pages.login.email_input.placeholder' | translate"
+                type="text"
+                nz-input
+                formControlName="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group nzPrefixIcon="lock">
+              <input
+                [placeholder]="
+                  'pages.login.password_input.placeholder' | translate
+                "
+                type="password"
+                nz-input
+                formControlName="password"
+                placeholder="Password"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+
+        <button nz-button [nzBlock]="true" nzType="primary" nzSize="large">
+          {{ 'pages.login.login_button' | translate }}
+        </button>
+      </form>
+    </nz-tab>
+    <nz-tab
+      (nzClick)="navigateToSignUp()"
+      [nzTitle]="'pages.login.sign_up_tab' | translate"
+    >
+    </nz-tab>
+  </nz-tabset>
+</div>

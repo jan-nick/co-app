@@ -18,6 +18,7 @@ async function bootstrap() {
     origin: environment.frontendUrl,
   });
   app.setGlobalPrefix(globalPrefix);
+  app.enableShutdownHooks();
 
   await app.listen(port);
 

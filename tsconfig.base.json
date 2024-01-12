@@ -14,7 +14,16 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": { "@co-app-env": ["env/environment.ts"] }
+    "paths": {
+      "@co-app-env": ["env/environment.ts"],
+      "@co-app/auth/backend": ["libs/auth/backend/src/index.ts"],
+      "@co-app/auth/core": ["libs/auth/core/src/index.ts"],
+      "@co-app/auth/frontend": ["libs/auth/frontend/src/index.ts"],
+      "@co-app/types": ["libs/types/src/index.ts"],
+      "@co-app/utils/backend": ["libs/utils/backend/src/index.ts"],
+      "@co-app/utils/core": ["libs/utils/core/src/index.ts"],
+      "@co-app/utils/frontend": ["libs/utils/frontend/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

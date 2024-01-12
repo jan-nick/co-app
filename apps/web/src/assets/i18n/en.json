@@ -1,0 +1,17 @@
+{
+  "pages.login.email_input.placeholder": "Email",
+  "pages.login.login_button": "Login",
+  "pages.login.password_input.placeholder": "Password",
+  "pages.login.login_tab": "Login",
+  "pages.login.sign_up_tab": "Register",
+  "pages.login.title": "Login",
+
+  "pages.sign_up.first_name_input.placeholder": "First name",
+  "pages.sign_up.last_name_input.placeholder": "Last name",
+  "pages.sign_up.email_input.placeholder": "Email",
+  "pages.sign_up.sign_up_button": "Create Account",
+  "pages.sign_up.password_input.placeholder": "Choose password",
+  "pages.sign_up.login_tab": "Login",
+  "pages.sign_up.sign_up_tab": "Register",
+  "pages.sign_up.title": "Register account"
+}

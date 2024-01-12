@@ -1,0 +1,85 @@
+<div class="wrapper">
+  <nz-tabset [nzSelectedIndex]="1">
+    <nz-tab
+      (nzClick)="navigateToLogin()"
+      [nzTitle]="'pages.sign_up.login_tab' | translate"
+    >
+    </nz-tab>
+    <nz-tab [nzTitle]="'pages.sign_up.sign_up_tab' | translate">
+      <form
+        nz-form
+        [formGroup]="formGroup"
+        class="sign_up-form"
+        (ngSubmit)="submit()"
+      >
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group>
+              <input
+                nz-input
+                [placeholder]="
+                  'pages.sign_up.first_name_input.placeholder' | translate
+                "
+                autocomplete="given-name"
+                formControlName="firstName"
+                name="email"
+                type="text"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group>
+              <input
+                nz-input
+                [placeholder]="
+                  'pages.sign_up.last_name_input.placeholder' | translate
+                "
+                autocomplete="family-name"
+                formControlName="lastName"
+                name="email"
+                type="text"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group>
+              <input
+                nz-input
+                [placeholder]="
+                  'pages.sign_up.email_input.placeholder' | translate
+                "
+                autocomplete="email"
+                formControlName="email"
+                name="email"
+                type="email"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group>
+              <input
+                nz-input
+                [placeholder]="
+                  'pages.sign_up.password_input.placeholder' | translate
+                "
+                formControlName="password"
+                placeholder="Password"
+                type="password"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+
+        <button nz-button [nzBlock]="true" nzType="primary" nzSize="large">
+          {{ 'pages.sign_up.sign_up_button' | translate }}
+        </button>
+      </form>
+    </nz-tab>
+  </nz-tabset>
+</div>
