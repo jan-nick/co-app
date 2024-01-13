@@ -9,12 +9,14 @@ import { AuthModule } from './auth/auth.module';
 import { PrismaModule } from './core/prisma/prisma.module';
 import { UsersModule } from './users/users.module';
 import { AccessTokenGuard } from './auth/guards/access-token.guard';
+import { OrganizationsModule } from './organizations/organizations.module';
 
 @Module({
   imports: [
     AuthModule,
     AuthBackendModule,
     ConfigModule.forRoot(),
+    OrganizationsModule,
     PrismaModule,
     UsersModule,
   ],

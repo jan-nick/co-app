@@ -7,28 +7,31 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-// model Member {
-//     id String @unique() @default(uuid())
+model Member {
+    id String @unique() @default(uuid())
 
-//     createdAt DateTime @default(now())
-//     updatedAt DateTime @updatedAt()
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt()
 
-//     userId String
-//     user   User   @relation(fields: [userId], references: [id])
+    userId String
+    user   User   @relation(fields: [userId], references: [id])
 
-//     organizationId String
-//     organization   Organization @relation(fields: [organizationId], references: [id])
-// }
+    organizationId String
+    organization   Organization @relation(fields: [organizationId], references: [id])
 
-// model Organization {
-//     id String @unique() @default(uuid())
+    @@id([organizationId, userId])
+}
 
-//     createdAt DateTime @default(now())
-//     updatedAt DateTime @updatedAt()
+model Organization {
+    id String @unique() @default(uuid())
 
-//     name   String
-//     members Member[]
-// }
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt()
+
+    name    String
+    purpose String
+    members Member[]
+}
 
 model User {
     id String @unique() @default(uuid())
@@ -43,5 +46,5 @@ model User {
 
     firstName String
     lastName  String
-    // member    Member[]
+    member    Member[]
 }
