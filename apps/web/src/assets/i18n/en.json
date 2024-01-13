@@ -1,4 +1,6 @@
 {
+  "components.header.logout_button": "Logout",
+
   "pages.login.email_input.placeholder": "Email",
   "pages.login.login_button": "Login",
   "pages.login.password_input.placeholder": "Password",

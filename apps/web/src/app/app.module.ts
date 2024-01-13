@@ -19,6 +19,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AuthInterceptor } from '@co-app/auth/frontend';
 import { JsonDateInterceptor } from '@co-app/utils/frontend';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { HeaderComponent } from './core/header/header.component';
 
 registerLocaleData(en);
 
@@ -28,6 +29,7 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
+    HeaderComponent,
     HttpClientModule,
     NzIconModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
