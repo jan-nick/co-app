@@ -1,0 +1,10 @@
+<nav *ngIf="user$ | async as user">
+  <div class="nav-items-end">
+    <span nz-typography>
+      {{ user.firstName + ' ' + user.lastName }}
+    </span>
+    <button nz-button (click)="logout()" [nzDanger]="true">
+      {{ 'components.header.logout_button' | translate }}
+    </button>
+  </div>
+</nav>

@@ -1,1 +1,7 @@
-<p>home works!</p>
+<nz-page-header [nzTitle]="'pages.home.page_header_title' | translate">
+  <nz-page-header-content>
+    <co-app-organizations-list
+      [organizations]="organizations$ | async"
+    ></co-app-organizations-list>
+  </nz-page-header-content>
+</nz-page-header>

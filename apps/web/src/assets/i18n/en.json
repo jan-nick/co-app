@@ -1,4 +1,11 @@
 {
+  "components.header.logout_button": "Logout",
+
+  "pages.home.title": "Home",
+  "pages.home.organisations_list_title": "Your coops",
+  "pages.home.organisations_list_empty": "You have no coops registered with this account.",
+  "pages.home.page_header_title": "Home",
+
   "pages.login.email_input.placeholder": "Email",
   "pages.login.login_button": "Login",
   "pages.login.password_input.placeholder": "Password",

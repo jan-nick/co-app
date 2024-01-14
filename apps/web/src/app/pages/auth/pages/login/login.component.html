@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="container-centered">
   <nz-tabset>
     <nz-tab [nzTitle]="'pages.login.login_tab' | translate">
       <form
@@ -33,6 +33,7 @@
                 nz-input
                 formControlName="password"
                 placeholder="Password"
+                autocomplete="current-password"
               />
             </nz-input-group>
           </nz-form-control>

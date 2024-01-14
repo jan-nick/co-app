@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="container-centered">
   <nz-tabset [nzSelectedIndex]="1">
     <nz-tab
       (nzClick)="navigateToLogin()"
@@ -65,6 +65,7 @@
             <nz-input-group>
               <input
                 nz-input
+                autocomplete="new-password"
                 [placeholder]="
                   'pages.sign_up.password_input.placeholder' | translate
                 "

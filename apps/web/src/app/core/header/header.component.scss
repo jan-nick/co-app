@@ -1,0 +1,11 @@
+nav {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+
+  .nav-items-end {
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+  }
+}
