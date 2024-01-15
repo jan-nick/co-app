@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '@co-app-env';
 import { Organization, Prisma } from '@prisma/client';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class OrganizationsService {
@@ -25,5 +26,11 @@ export class OrganizationsService {
     }
 
     return this.httpClient.get<Organization[]>(`${this.url}`, { params });
+  }
+
+  update(id: string, data: Partial<Organization>) {
+    return firstValueFrom(
+      this.httpClient.patch<Organization>(`${this.url}/${id}`, data)
+    );
   }
 }

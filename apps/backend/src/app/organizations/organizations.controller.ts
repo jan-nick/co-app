@@ -1,7 +1,8 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch } from '@nestjs/common';
 import { OrganizationsService } from './organizations.service';
 import { Prisma } from '@prisma/client';
 import { ParseArgs } from '@co-app/utils/backend';
+import { UpdateOrganizationDto } from './dto/update-organization.dto';
 
 @Controller('organizations')
 export class OrganizationsController {
@@ -16,6 +17,19 @@ export class OrganizationsController {
   @Get(':id')
   async findOne(@Param('id') id: string) {
     const organization = await this.organizationsService.findOne(id);
+    return organization;
+  }
+
+  @Patch(':id')
+  async update(
+    @Param('id') id: string,
+    @Body() updateOrganizationDto: UpdateOrganizationDto
+  ) {
+    const organization = await this.organizationsService.update(
+      id,
+      updateOrganizationDto
+    );
+
     return organization;
   }
 }

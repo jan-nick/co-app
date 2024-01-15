@@ -1,0 +1,15 @@
+<nz-breadcrumb>
+  <nz-breadcrumb-item>
+    <a [routerLink]="['/home']">
+      {{ 'pages.home.title' | translate }}
+    </a>
+  </nz-breadcrumb-item>
+  <nz-breadcrumb-item *ngIf="organization$ | async as organization">
+    <a [routerLink]="['overview']">
+      {{ organization.name }}
+    </a>
+  </nz-breadcrumb-item>
+  <nz-breadcrumb-item *ngIf="currentPath$ | async as currentPath">
+    {{ 'pages.organization.' + currentPath + '.title' | translate }}
+  </nz-breadcrumb-item>
+</nz-breadcrumb>

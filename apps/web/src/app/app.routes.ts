@@ -31,10 +31,28 @@ export const appRoutes: Route[] = [
       redirectToOnDeactivate: 'home',
     },
   },
+
+  // Logged in
   {
     path: 'home',
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomeModule),
+    canActivate: [SignedInGuard],
+    data: {
+      redirectToOnDeactivate: 'login',
+    },
+  },
+  {
+    path: 'organization',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  {
+    path: 'organization/:id',
+    loadChildren: () =>
+      import('./pages/organization/organization.module').then(
+        (m) => m.OrganizationModule
+      ),
     canActivate: [SignedInGuard],
     data: {
       redirectToOnDeactivate: 'login',

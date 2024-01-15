@@ -30,6 +30,9 @@ model Organization {
 
     name    String
     purpose String
+
+    bulletin String?
+
     members Member[]
 }
 

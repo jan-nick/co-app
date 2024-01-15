@@ -1,6 +1,10 @@
 {
   "components.header.logout_button": "Logout",
 
+  "common.cancel": "Cancel",
+  "common.edit": "Edit",
+  "common.save": "Save",
+
   "pages.home.title": "Home",
   "pages.home.organisations_list_title": "Your coops",
   "pages.home.organisations_list_empty": "You have no coops registered with this account.",
@@ -12,6 +16,13 @@
   "pages.login.login_tab": "Login",
   "pages.login.sign_up_tab": "Register",
   "pages.login.title": "Login",
+
+  "pages.organization.side_menu.overview_menu_item": "Overview",
+  "pages.organization.side_menu.participation_menu_item": "Participation",
+  "pages.organization.side_menu.members_menu_item": "Members",
+
+  "pages.organization.overview.page_header_title": "Overview",
+  "pages.organization.overview.title": "Overview",
 
   "pages.sign_up.first_name_input.placeholder": "First name",
   "pages.sign_up.last_name_input.placeholder": "Last name",
