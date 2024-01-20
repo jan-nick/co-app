@@ -17,6 +17,13 @@
   "pages.login.sign_up_tab": "Register",
   "pages.login.title": "Login",
 
+  "pages.organization.members.add_member_modal.title": "Add member",
+  "pages.organization.members.add_member_modal.email_input.placeholder": "Email",
+  "pages.organization.members.open_add_member_modal_button": "Add member",
+  "pages.organization.members.page_header_title": "Members",
+  "pages.organization.members.title": "Members",
+  "pages.organization.members.members_table.name": "Name",
+
   "pages.organization.side_menu.overview_menu_item": "Overview",
   "pages.organization.side_menu.participation_menu_item": "Participation",
   "pages.organization.side_menu.members_menu_item": "Members",

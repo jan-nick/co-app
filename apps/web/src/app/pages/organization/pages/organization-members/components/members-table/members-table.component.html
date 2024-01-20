@@ -1,0 +1,16 @@
+<nz-table *ngIf="members$ | async as members" #membersTable [nzData]="members">
+  <thead>
+    <tr>
+      <th>
+        {{ 'pages.organization.members.members_table.name' | translate }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let member of membersTable.data">
+      <td>
+        {{ member.user.firstName + ' ' + member.user.lastName }}
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

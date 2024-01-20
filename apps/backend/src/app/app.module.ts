@@ -10,12 +10,14 @@ import { PrismaModule } from './core/prisma/prisma.module';
 import { UsersModule } from './users/users.module';
 import { AccessTokenGuard } from './auth/guards/access-token.guard';
 import { OrganizationsModule } from './organizations/organizations.module';
+import { MembersModule } from './members/members.module';
 
 @Module({
   imports: [
     AuthModule,
     AuthBackendModule,
     ConfigModule.forRoot(),
+    MembersModule,
     OrganizationsModule,
     PrismaModule,
     UsersModule,

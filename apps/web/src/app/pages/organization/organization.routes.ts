@@ -22,6 +22,13 @@ export const organizationRoutes: Routes = [
             './pages/organization-overview/organization-overview.module'
           ).then((m) => m.OrganizationOverviewModule),
       },
+      {
+        path: 'members',
+        loadChildren: () =>
+          import(
+            './pages/organization-members/organization-members.module'
+          ).then((m) => m.OrganizationMembersModule),
+      },
     ],
   },
 ];

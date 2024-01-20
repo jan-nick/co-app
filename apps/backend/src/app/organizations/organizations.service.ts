@@ -17,10 +17,10 @@ export class OrganizationsService {
     });
   }
 
-  update(id: string, updateLibraryFileDto: UpdateOrganizationDto) {
+  update(id: string, updateOrganizationDto: UpdateOrganizationDto) {
     return this.prisma.organization.update({
       where: { id },
-      data: updateLibraryFileDto,
+      data: updateOrganizationDto,
     });
   }
 }

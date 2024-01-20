@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { OrganizationsService } from '@co-app/organizations/frontend';
 import { Organization } from '@prisma/client';
-import { BehaviorSubject, Subject, switchMap, take } from 'rxjs';
+import { BehaviorSubject, Subject, shareReplay, switchMap, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ export class OrganizationStoreService {
   private readonly refreshSubject = new BehaviorSubject(null);
 
   private readonly organizationSubject = new Subject<Organization>();
-  readonly organization$ = this.organizationSubject.asObservable();
+  readonly organization$ = this.organizationSubject.pipe(shareReplay(1));
 
   private organizationId: string | undefined;
 
