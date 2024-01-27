@@ -1,0 +1,28 @@
+<nz-page-header
+  [nzTitle]="'pages.organization.participation.page_header_title' | translate"
+>
+  <nz-page-header-extra>
+    <button (click)="createVoteModal.open()" nz-button>
+      {{
+        'pages.organization.participation.open_create_vote_modal_button'
+          | translate
+      }}
+    </button>
+    <co-app-create-vote-modal #createVoteModal></co-app-create-vote-modal>
+  </nz-page-header-extra>
+  <nz-page-header-content>
+    <ng-container *ngIf="votes$ | async as votes">
+      <co-app-ongoing-votes-table
+        [votes]="votes.ongoing"
+      ></co-app-ongoing-votes-table>
+      <nz-divider></nz-divider>
+      <co-app-upcoming-votes-table
+        [votes]="votes.upcoming"
+      ></co-app-upcoming-votes-table>
+      <nz-divider></nz-divider>
+      <co-app-closed-votes-table
+        [votes]="votes.closed"
+      ></co-app-closed-votes-table>
+    </ng-container>
+  </nz-page-header-content>
+</nz-page-header>

@@ -26,7 +26,14 @@
       "@co-app/types": ["libs/types/src/index.ts"],
       "@co-app/utils/backend": ["libs/utils/backend/src/index.ts"],
       "@co-app/utils/core": ["libs/utils/core/src/index.ts"],
-      "@co-app/utils/frontend": ["libs/utils/frontend/src/index.ts"]
+      "@co-app/utils/frontend": ["libs/utils/frontend/src/index.ts"],
+      "@co-app/votes/frontend": ["libs/votes/frontend/src/index.ts"],
+      "@co-app/votes/vote-ballots/frontend": [
+        "libs/votes/vote-ballots/frontend/src/index.ts"
+      ],
+      "@co-app/votes/vote-options/frontend": [
+        "libs/votes/vote-options/frontend/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

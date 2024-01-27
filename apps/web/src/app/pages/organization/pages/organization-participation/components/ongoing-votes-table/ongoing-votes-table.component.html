@@ -1,0 +1,42 @@
+<h5 nz-typography>
+  {{ 'pages.organization.participation.ongoing_votes_table_title' | translate }}
+</h5>
+
+<nz-table *ngIf="votes" #ongoingVotesTable [nzData]="votes">
+  <thead>
+    <tr>
+      <th>
+        {{
+          'pages.organization.participation.ongoing_votes_table.name'
+            | translate
+        }}
+      </th>
+      <th>
+        {{
+          'pages.organization.participation.ongoing_votes_table.ends_at'
+            | translate
+        }}
+      </th>
+      <th width="160"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let vote of ongoingVotesTable.data">
+      <td>
+        {{ vote.name }}
+      </td>
+      <td>
+        {{ vote.endsAt | date : 'short' }}
+      </td>
+      <td>
+        <a (click)="castBallotModal.open(vote)" nz-button nzType="link">
+          {{
+            'pages.organization.participation.ongoing_votes_table_cast_vote_button'
+              | translate
+          }}
+        </a>
+        <co-app-cast-ballot-modal #castBallotModal></co-app-cast-ballot-modal>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

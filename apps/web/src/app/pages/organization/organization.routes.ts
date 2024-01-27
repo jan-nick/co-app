@@ -23,6 +23,13 @@ export const organizationRoutes: Routes = [
           ).then((m) => m.OrganizationOverviewModule),
       },
       {
+        path: 'participation',
+        loadChildren: () =>
+          import(
+            './pages/organization-participation/organization-participation.module'
+          ).then((m) => m.OrganizationParticipationModule),
+      },
+      {
         path: 'members',
         loadChildren: () =>
           import(

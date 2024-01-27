@@ -1,0 +1,41 @@
+<h5 nz-typography>
+  {{ 'pages.organization.participation.closed_votes_table_title' | translate }}
+</h5>
+
+<nz-table *ngIf="votes" #closedVotesTable [nzData]="votes">
+  <thead>
+    <tr>
+      <th>
+        {{
+          'pages.organization.participation.closed_votes_table.name' | translate
+        }}
+      </th>
+      <th>
+        {{
+          'pages.organization.participation.closed_votes_table.ends_at'
+            | translate
+        }}
+      </th>
+      <th width="160"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let vote of closedVotesTable.data">
+      <td>
+        {{ vote.name }}
+      </td>
+      <td>
+        {{ vote.endsAt | date : 'short' }}
+      </td>
+      <td>
+        <a (click)="voteResultModal.open(vote)" nz-button nzType="link">
+          {{
+            'pages.organization.participation.closed_votes_table_show_result_modal_button'
+              | translate
+          }}
+        </a>
+        <co-app-vote-result-modal #voteResultModal></co-app-vote-result-modal>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

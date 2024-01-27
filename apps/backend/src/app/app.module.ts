@@ -11,6 +11,7 @@ import { UsersModule } from './users/users.module';
 import { AccessTokenGuard } from './auth/guards/access-token.guard';
 import { OrganizationsModule } from './organizations/organizations.module';
 import { MembersModule } from './members/members.module';
+import { VotesModule } from './votes/votes.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { MembersModule } from './members/members.module';
     OrganizationsModule,
     PrismaModule,
     UsersModule,
+    VotesModule,
   ],
   controllers: [AppController],
   providers: [
