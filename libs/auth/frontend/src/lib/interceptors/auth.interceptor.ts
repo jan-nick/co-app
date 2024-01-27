@@ -25,7 +25,7 @@ export class AuthInterceptor implements HttpInterceptor {
       )
       .subscribe(async (auth) => {
         if (auth && auth.user && auth.accessToken) {
-          await this.authService.logout(auth);
+          await this.authService.logout(auth, { skipRequest: true });
         }
 
         this.router.navigate(['']);

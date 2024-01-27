@@ -23,8 +23,8 @@ export class SignUpComponent {
     private readonly router: Router
   ) {}
 
-  navigateToLogin() {
-    this.router.navigate(['/login']);
+  async navigateToLogin() {
+    await this.router.navigate(['/login']);
   }
 
   async navigateToHome() {

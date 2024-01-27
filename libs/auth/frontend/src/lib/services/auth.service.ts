@@ -1,17 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '@co-app-env';
+import { Auth, LoginCredentials, SignUpCredentials } from '@co-app/types';
 import {
-  Auth,
-  LoginCredentials,
-  SignUpCredentials,
-} from '@co-app/types';
-import {
+  BehaviorSubject,
   Observable,
   firstValueFrom,
-  fromEvent,
   of,
-  startWith,
   switchMap,
   tap,
 } from 'rxjs';
@@ -22,12 +17,12 @@ import {
 export class AuthService {
   private readonly resource = 'auth';
 
-  protected get url() {
+  private get url() {
     return `${environment.backendUrl}/${this.resource}`;
   }
 
-  readonly auth$: Observable<Auth | null> = fromEvent(window, 'auth').pipe(
-    startWith(null),
+  private readonly authSubject = new BehaviorSubject<Auth | null>(null);
+  readonly auth$: Observable<Auth | null> = this.authSubject.pipe(
     switchMap(() => {
       const auth = localStorage.getItem('auth');
 
@@ -59,15 +54,17 @@ export class AuthService {
     );
   }
 
-  logout(auth: Auth) {
-    return firstValueFrom(
-      this.httpClient
-        .post<Auth>(`${this.url}/logout`, {
+  async logout(auth: Auth, options = { skipRequest: false }) {
+    if (!options.skipRequest) {
+      await firstValueFrom(
+        this.httpClient.post<Auth>(`${this.url}/logout`, {
           userId: auth.user.id,
           accessToken: auth.accessToken,
         })
-        .pipe(tap(() => this.setAuth(null)))
-    );
+      );
+    }
+
+    this.setAuth(null);
   }
 
   private setAuth(auth: Auth | null) {
@@ -77,6 +74,6 @@ export class AuthService {
       localStorage.removeItem('auth');
     }
 
-    window.dispatchEvent(new Event('auth'));
+    this.authSubject.next(auth);
   }
 }
