@@ -4,12 +4,28 @@
       <th>
         {{ 'pages.organization.members.members_table.name' | translate }}
       </th>
+      <th>
+        {{ 'pages.organization.members.members_table.roles' | translate }}
+      </th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let member of membersTable.data">
       <td>
         {{ member.user.firstName + ' ' + member.user.lastName }}
+      </td>
+      <td>
+        <ng-container *ngIf="member.organizationRoles.length; else noRole">
+          <span *ngFor="let role of member.organizationRoles; let last = last">
+            {{ 'organization_roles.' + role.name | translate
+            }}{{ last ? '' : ',' }}
+          </span>
+        </ng-container>
+        <ng-template #noRole>
+          <span nz-typography nzType="secondary">
+            {{ 'common.n/a' | translate }}
+          </span>
+        </ng-template>
       </td>
     </tr>
   </tbody>

@@ -1,7 +1,14 @@
 import { Injectable } from '@angular/core';
 import { OrganizationsService } from '@co-app/organizations/frontend';
-import { Organization } from '@prisma/client';
-import { BehaviorSubject, Subject, shareReplay, switchMap, take } from 'rxjs';
+import { Organization, OrganizationRole } from '@prisma/client';
+import {
+  BehaviorSubject,
+  Subject,
+  combineLatest,
+  map,
+  shareReplay,
+  switchMap,
+} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +16,19 @@ import { BehaviorSubject, Subject, shareReplay, switchMap, take } from 'rxjs';
 export class OrganizationStoreService {
   private readonly refreshSubject = new BehaviorSubject(null);
 
-  private readonly organizationSubject = new Subject<Organization>();
-  readonly organization$ = this.organizationSubject.pipe(shareReplay(1));
+  private readonly organizationDataSubject = new Subject<{
+    organization: Organization;
+    organizationRoles: OrganizationRole[];
+  }>();
+
+  readonly organization$ = this.organizationDataSubject.pipe(
+    map(({ organization }) => organization),
+    shareReplay(1)
+  );
+  readonly organizationRoles$ = this.organizationDataSubject.pipe(
+    map(({ organizationRoles }) => organizationRoles),
+    shareReplay(1)
+  );
 
   private organizationId: string | undefined;
 
@@ -21,12 +39,16 @@ export class OrganizationStoreService {
     this.refreshSubject
       .pipe(
         switchMap(() =>
-          this.organizationsService.findOne(organizationId).pipe(take(1))
+          combineLatest({
+            organization: this.organizationsService.findOne(organizationId),
+            organizationRoles:
+              this.organizationsService.findAllRoles(organizationId),
+          })
         )
       )
 
-      .subscribe((organization) => {
-        this.organizationSubject.next(organization);
+      .subscribe((organizationData) => {
+        this.organizationDataSubject.next(organizationData);
       });
   }
 

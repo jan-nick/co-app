@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '@co-app-env';
-import { Organization, Prisma } from '@prisma/client';
+import { Organization, OrganizationRole, Prisma } from '@prisma/client';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
@@ -32,5 +32,9 @@ export class OrganizationsService {
     return firstValueFrom(
       this.httpClient.patch<Organization>(`${this.url}/${id}`, data)
     );
+  }
+
+  findAllRoles(id: string) {
+    return this.httpClient.get<OrganizationRole[]>(`${this.url}/${id}/roles`);
   }
 }

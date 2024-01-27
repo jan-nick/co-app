@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Member {
-    id String @unique() @default(uuid())
+    id String @id @default(uuid())
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt()
@@ -19,7 +19,9 @@ model Member {
     organizationId String
     organization   Organization @relation(fields: [organizationId], references: [id])
 
-    @@id([organizationId, userId])
+    organizationRoles OrganizationRole[]
+
+    @@unique([organizationId, userId])
 }
 
 model Organization {
@@ -33,8 +35,24 @@ model Organization {
 
     bulletin String?
 
+    members           Member[]
+    organizationRoles OrganizationRole[]
+    votes             Vote[]
+}
+
+// TODO: Add constraint that only members can have role 
+model OrganizationRole {
+    id String @id @default(uuid())
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt()
+
+    name String
+
+    organizationId String
+    organization   Organization @relation(fields: [organizationId], references: [id])
+
     members Member[]
-    votes   Vote[]
 }
 
 model User {
@@ -75,7 +93,7 @@ model Vote {
 }
 
 model VoteBallot {
-    id String @unique() @default(uuid())
+    id String @id() @default(uuid())
 
     createdAt DateTime @default(now())
 
@@ -88,7 +106,7 @@ model VoteBallot {
     voteOption   VoteOption @relation(fields: [voteOptionId], references: [id])
     voteOptionId String
 
-    @@id([userId, voteId])
+    @@unique([userId, voteId])
 }
 
 model VoteOption {

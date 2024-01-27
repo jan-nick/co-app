@@ -4,8 +4,12 @@
   "common.cancel": "Cancel",
   "common.edit": "Edit",
   "common.no": "No",
+  "common.n/a": "n/a",
   "common.save": "Save",
   "common.yes": "Yes",
+
+  "organization_roles.admin": "Admin",
+  "organization_roles.representative": "Representative",
 
   "pages.home.title": "Home",
   "pages.home.organisations_list_title": "Your coops",
@@ -25,6 +29,7 @@
   "pages.organization.members.page_header_title": "Members",
   "pages.organization.members.title": "Members",
   "pages.organization.members.members_table.name": "Name",
+  "pages.organization.members.members_table.roles": "Roles",
 
   "pages.organization.participation.cast_ballot_modal.vote_type_label": "Resolution",
   "pages.organization.participation.cast_ballot_modal.title": "Cast vote",

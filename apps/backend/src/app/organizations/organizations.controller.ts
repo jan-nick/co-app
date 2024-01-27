@@ -32,4 +32,10 @@ export class OrganizationsController {
 
     return organization;
   }
+
+  @Get(':id/roles')
+  async findAllRoles(@Param('id') id: string) {
+    const organizations = await this.organizationsService.findAllRoles(id);
+    return organizations;
+  }
 }

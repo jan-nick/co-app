@@ -23,4 +23,10 @@ export class OrganizationsService {
       data: updateOrganizationDto,
     });
   }
+
+  findAllRoles(id: string) {
+    return this.prisma.organizationRole.findMany({
+      where: { organizationId: id },
+    });
+  }
 }

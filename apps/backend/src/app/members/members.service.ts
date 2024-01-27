@@ -3,6 +3,7 @@ import { PrismaService } from '../core/prisma/prisma.service';
 import { Prisma } from '@prisma/client';
 import { CreateMemberDto } from './dto/create-member.dto';
 import { UsersService } from '../users/users.service';
+import { UpdateMemberRolesDto } from './dto/update-member-roles.dto';
 
 @Injectable()
 export class MembersService {
@@ -19,6 +20,17 @@ export class MembersService {
     const user = await this.usersService.findOneByEmail(email);
     return this.prisma.member.create({
       data: { userId: user.id, organizationId },
+    });
+  }
+
+  async setRoles({ memberId, memberRoles }: UpdateMemberRolesDto) {
+    return this.prisma.member.update({
+      where: { id: memberId },
+      data: {
+        memberRoles: {
+          set: memberRoles,
+        },
+      },
     });
   }
 }

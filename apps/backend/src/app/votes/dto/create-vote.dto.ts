@@ -1,4 +1,4 @@
-import { Prisma, VoteOption } from '@prisma/client';
+import { VoteOption } from '@prisma/client';
 import { IsDate, IsString, IsUUID } from 'class-validator';
 
 export class CreateVoteDto {
