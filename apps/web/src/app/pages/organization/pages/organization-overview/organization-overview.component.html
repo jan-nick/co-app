@@ -1,7 +1,7 @@
 <nz-page-header
   [nzTitle]="'pages.organization.overview.page_header_title' | translate"
 >
-  <nz-page-header-extra>
+  <nz-page-header-extra *ngIf="userIsAdmin$ | async">
     <button *ngIf="!isEditing" (click)="edit()" nz-button>
       {{ 'common.edit' | translate }}
     </button>

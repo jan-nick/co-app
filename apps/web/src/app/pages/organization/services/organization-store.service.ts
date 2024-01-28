@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AuthService } from '@co-app/auth/frontend';
 import { OrganizationsService } from '@co-app/organizations/frontend';
 import { Organization, OrganizationRole } from '@prisma/client';
 import {
@@ -29,10 +30,21 @@ export class OrganizationStoreService {
     map(({ organizationRoles }) => organizationRoles),
     shareReplay(1)
   );
+  readonly userOrganizationRole$ = combineLatest({
+    auth: this.authService.auth$,
+    organizationRoles: this.organizationRoles$,
+  }).pipe(
+    map(({ auth, organizationRoles }) =>
+      organizationRoles.find((role) => role.id === auth?.user.id)
+    )
+  );
 
   private organizationId: string | undefined;
 
-  constructor(private readonly organizationsService: OrganizationsService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly organizationsService: OrganizationsService
+  ) {}
 
   init(organizationId: string) {
     this.organizationId = organizationId;

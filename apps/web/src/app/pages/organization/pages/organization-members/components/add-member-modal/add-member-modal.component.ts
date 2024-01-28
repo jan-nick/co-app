@@ -13,7 +13,8 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { TranslateModule } from '@ngx-translate/core';
 import { MembersService } from '@co-app/members/frontend';
 import { OrganizationStoreService } from '../../../../services/organization-store.service';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, map } from 'rxjs';
+import { DefaultOrganizationRole } from '@co-app/types';
 
 @Component({
   selector: 'co-app-add-member-modal',
@@ -34,6 +35,8 @@ export class AddMemberModalComponent {
   readonly formGroup = new FormGroup({
     email: new FormControl<string>('', [Validators.required, Validators.email]),
   });
+
+
 
   visible = false;
 

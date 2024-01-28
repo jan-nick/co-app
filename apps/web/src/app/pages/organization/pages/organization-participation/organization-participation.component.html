@@ -1,7 +1,7 @@
 <nz-page-header
   [nzTitle]="'pages.organization.participation.page_header_title' | translate"
 >
-  <nz-page-header-extra>
+  <nz-page-header-extra *ngIf="userIsAdminOrRepresentative$ | async">
     <button (click)="createVoteModal.open()" nz-button>
       {{
         'pages.organization.participation.open_create_vote_modal_button'

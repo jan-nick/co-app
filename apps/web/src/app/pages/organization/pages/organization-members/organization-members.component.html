@@ -1,7 +1,7 @@
 <nz-page-header
   [nzTitle]="'pages.organization.members.page_header_title' | translate"
 >
-  <nz-page-header-extra>
+  <nz-page-header-extra *ngIf="userIsAdmin$ | async">
     <button (click)="addMemberModal.open()" nz-button>
       {{
         'pages.organization.members.open_add_member_modal_button' | translate

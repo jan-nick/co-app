@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { VotesStoreService } from './services/votes-store.service';
 import { map } from 'rxjs';
+import { DefaultOrganizationRole } from '@co-app/types';
+import { OrganizationStoreService } from '../../services/organization-store.service';
 
 @Component({
   selector: 'co-app-organization-participation',
@@ -19,6 +21,17 @@ export class OrganizationParticipationComponent {
       return { ongoing, upcoming, closed };
     })
   );
+  readonly userIsAdminOrRepresentative$ =
+    this.organizationStoreService.userOrganizationRole$.pipe(
+      map(
+        (role) =>
+          role?.name === DefaultOrganizationRole.Admin ||
+          role?.name === DefaultOrganizationRole.Representative
+      )
+    );
 
-  constructor(private readonly votesStoreService: VotesStoreService) {}
+  constructor(
+    private readonly organizationStoreService: OrganizationStoreService,
+    private readonly votesStoreService: VotesStoreService
+  ) {}
 }

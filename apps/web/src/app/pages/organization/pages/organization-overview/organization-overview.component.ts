@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrganizationStoreService } from '../../services/organization-store.service';
+import { map } from 'rxjs';
+import { DefaultOrganizationRole } from '@co-app/types';
 
 @Component({
   selector: 'co-app-organization-overview',
@@ -8,6 +10,10 @@ import { OrganizationStoreService } from '../../services/organization-store.serv
 })
 export class OrganizationOverviewComponent implements OnInit {
   readonly organization$ = this.organizationStoreService.organization$;
+  readonly userIsAdmin$ =
+    this.organizationStoreService.userOrganizationRole$.pipe(
+      map((role) => role?.name === DefaultOrganizationRole.Admin)
+    );
 
   bulletin = '';
 
