@@ -1,5 +1,7 @@
 # CoApp
 
+Prototyp für die von Jan Nicklas verfasste Bachelorarbeit „Entwurf und prototypische Implementierung einer Digitalplattform für Genossenschaften“ (2024).
+
 Prototype for the Bachelor's thesis written by Jan Nicklas "Design and prototype implementation of a digital platform for cooperatives" (2024).
 
 
@@ -13,8 +15,17 @@ Run `nx serve web`. Open your browser and navigate to http://localhost:4200/.
 ### Backend
 Run `nx serve backend`. The backend server will be served on http://localhost:4200/.
 
-### Database
+## Setup Database
+
+### Run Container
 Run `docker compose up` from apps/backend directory (requires [Docker](https://www.docker.com/products/docker-desktop/)).
+
+### Add seed data
+Run `npx prisma db seed` to populate the database with an organization and a user that is a member with the "admin" role in that organization.
+
+Login credentials for the seed user:
+- E-Mail: example@mail.com
+- Passwort: password123
 
 ## Deploy
 
@@ -22,4 +33,4 @@ Run `nx build web`, or `nx build backend` respectively to build an application. 
 
 ## Contributions
 
-Commit messages are formatted based on the Conventional Commits specification (https://www.conventionalcommits.org/en/v1.0.0/).
+Commit messages are formatted based on the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
