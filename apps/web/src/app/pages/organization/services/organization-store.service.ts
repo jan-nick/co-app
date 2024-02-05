@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from '@co-app/auth/frontend';
+import { MembersService } from '@co-app/members/frontend';
 import { OrganizationsService } from '@co-app/organizations/frontend';
+import { MemberWithOrganizationRolesAndUser } from '@co-app/types';
 import { Organization, OrganizationRole } from '@prisma/client';
 import {
   BehaviorSubject,
+  Observable,
   Subject,
   combineLatest,
   map,
@@ -18,12 +21,17 @@ export class OrganizationStoreService {
   private readonly refreshSubject = new BehaviorSubject(null);
 
   private readonly organizationDataSubject = new Subject<{
+    members: MemberWithOrganizationRolesAndUser[];
     organization: Organization;
     organizationRoles: OrganizationRole[];
   }>();
 
   readonly organization$ = this.organizationDataSubject.pipe(
     map(({ organization }) => organization),
+    shareReplay(1)
+  );
+  readonly members$ = this.organizationDataSubject.pipe(
+    map(({ members }) => members),
     shareReplay(1)
   );
   readonly organizationRoles$ = this.organizationDataSubject.pipe(
@@ -43,6 +51,7 @@ export class OrganizationStoreService {
 
   constructor(
     private readonly authService: AuthService,
+    private readonly membersService: MembersService,
     private readonly organizationsService: OrganizationsService
   ) {}
 
@@ -52,6 +61,15 @@ export class OrganizationStoreService {
       .pipe(
         switchMap(() =>
           combineLatest({
+            members: this.membersService.findAll({
+              where: { organizationId: organizationId },
+              include: {
+                user: true,
+                organizationRoles: {
+                  where: { organizationId: organizationId },
+                },
+              },
+            }) as Observable<MemberWithOrganizationRolesAndUser[]>,
             organization: this.organizationsService.findOne(organizationId),
             organizationRoles:
               this.organizationsService.findAllRoles(organizationId),

@@ -1,4 +1,5 @@
-import { IsEmail, IsUUID } from 'class-validator';
+import { OrganizationRole } from '@prisma/client';
+import { IsArray, IsEmail, IsOptional, IsUUID } from 'class-validator';
 
 export class CreateMemberDto {
   @IsEmail()
@@ -6,4 +7,8 @@ export class CreateMemberDto {
 
   @IsUUID()
   organizationId: string;
+
+  @IsOptional()
+  @IsArray()
+  organizationRoles: OrganizationRole[];
 }

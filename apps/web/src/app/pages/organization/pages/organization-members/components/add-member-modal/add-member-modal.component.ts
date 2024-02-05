@@ -36,8 +36,6 @@ export class AddMemberModalComponent {
     email: new FormControl<string>('', [Validators.required, Validators.email]),
   });
 
-
-
   visible = false;
 
   constructor(
@@ -65,6 +63,8 @@ export class AddMemberModalComponent {
       organizationId: organization.id,
       email,
     });
+
+    this.organizationStoreService.triggerRefresh();
 
     this.close();
   }

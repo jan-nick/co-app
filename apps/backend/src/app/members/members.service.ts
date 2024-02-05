@@ -23,12 +23,12 @@ export class MembersService {
     });
   }
 
-  async setRoles({ memberId, memberRoles }: UpdateMemberRolesDto) {
+  async setRoles({ memberId, organizationRoles }: UpdateMemberRolesDto) {
     return this.prisma.member.update({
       where: { id: memberId },
       data: {
-        memberRoles: {
-          set: memberRoles,
+        organizationRoles: {
+          set: organizationRoles,
         },
       },
     });

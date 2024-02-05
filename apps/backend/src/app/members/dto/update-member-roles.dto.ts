@@ -1,4 +1,4 @@
-import { MemberRole } from '@prisma/client';
+import { OrganizationRole } from '@prisma/client';
 import { IsArray, IsUUID } from 'class-validator';
 
 export class UpdateMemberRolesDto {
@@ -6,5 +6,5 @@ export class UpdateMemberRolesDto {
   memberId: string;
 
   @IsArray()
-  memberRoles: MemberRole[];
+  organizationRoles: OrganizationRole[];
 }
