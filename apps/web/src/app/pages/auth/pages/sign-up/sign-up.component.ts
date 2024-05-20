@@ -31,7 +31,8 @@ export class SignUpComponent {
     await this.router.navigate(['/home']);
   }
 
-  async submit() {
+  async submit($event: FormDataEvent) {
+    $event.preventDefault();
     this.formGroup.markAllAsTouched();
 
     const { firstName, lastName, email, password } = this.formGroup.value;
@@ -52,7 +53,7 @@ export class SignUpComponent {
       await this.authService.signUp({ firstName, lastName, email, password });
       await this.navigateToHome();
     } catch (error) {
-      this.formGroup.setErrors({ error });
+      this.formGroup.controls.email.setErrors({ error });
     }
 
     this.loading = false;

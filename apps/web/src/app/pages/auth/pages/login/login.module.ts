@@ -10,6 +10,7 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
 import { loginRoutes } from './login.routes';
 import { LoginComponent } from './login.component';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -19,6 +20,7 @@ import { LoginComponent } from './login.component';
     NzFormModule,
     NzInputModule,
     NzTabsModule,
+    NzTypographyModule,
     ReactiveFormsModule,
     RouterModule.forChild(loginRoutes),
     TranslateModule,

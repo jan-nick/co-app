@@ -1,17 +1,27 @@
 <div class="container-centered">
+  <img
+    class="logo"
+    src="../../../../../assets/images/logo-with-text.png"
+    alt=""
+  />
+  <p nz-typography nzType="secondary" class="mb-4">
+    {{ 'pages.login/sign_up.slogan' | translate }}
+  </p>
   <nz-tabset>
     <nz-tab [nzTitle]="'pages.login.login_tab' | translate">
       <form
         nz-form
         [formGroup]="formGroup"
         class="login-form"
-        (ngSubmit)="submit()"
+        (ngSubmit)="submit($event)"
       >
         <nz-form-item>
           <nz-form-control>
-            <nz-input-group nzPrefixIcon="user">
+            <nz-input-group nzPrefixIcon="user" nzSize="large">
               <input
-                [placeholder]="'pages.login.email_input.placeholder' | translate"
+                [placeholder]="
+                  'pages.login.email_input.placeholder' | translate
+                "
                 type="text"
                 nz-input
                 formControlName="email"
@@ -24,7 +34,7 @@
         </nz-form-item>
         <nz-form-item>
           <nz-form-control>
-            <nz-input-group nzPrefixIcon="lock">
+            <nz-input-group nzPrefixIcon="lock" nzSize="large">
               <input
                 [placeholder]="
                   'pages.login.password_input.placeholder' | translate
@@ -39,7 +49,13 @@
           </nz-form-control>
         </nz-form-item>
 
-        <button nz-button [nzBlock]="true" nzType="primary" nzSize="large">
+        <button
+          [nzBlock]="true"
+          [nzLoading]="loading"
+          nz-button
+          nzSize="large"
+          nzType="primary"
+        >
           {{ 'pages.login.login_button' | translate }}
         </button>
       </form>

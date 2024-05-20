@@ -22,6 +22,7 @@
   "pages.login.login_tab": "Login",
   "pages.login.sign_up_tab": "Register",
   "pages.login.title": "Login",
+  "pages.login/sign_up.slogan": "A digital plattform for cooperatives.",
 
   "pages.organization.members.add_member_modal.title": "Add member",
   "pages.organization.members.add_member_modal.email_input.placeholder": "Email",

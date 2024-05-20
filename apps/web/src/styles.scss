@@ -1,4 +1,9 @@
 @import '~ng-zorro-antd/ng-zorro-antd.min.css';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/variables-dark';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/utilities';
 
 .container-centered {
   height: 100%;
@@ -22,4 +27,13 @@ nz-page-header {
 
 .ant-menu.ant-menu-inline {
   background-color: transparent;
+}
+
+.ant-btn {
+  border-radius: 6px !important;
+}
+
+.ant-input,
+nz-input-group {
+  border-radius: 6px !important;
 }

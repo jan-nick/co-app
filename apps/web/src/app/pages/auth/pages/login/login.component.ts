@@ -29,22 +29,24 @@ export class LoginComponent {
     await this.router.navigate(['/home']);
   }
 
-  async submit() {
-    this.formGroup.markAllAsTouched();
+  async submit($event: FormDataEvent) {
+    $event.preventDefault();
+    this.formGroup.markAsDirty();
 
     const { email, password } = this.formGroup.value;
 
     if (this.formGroup.invalid || !email || !password) {
       return;
     }
-    
+
     this.loading = true;
 
     try {
       await this.authService.login({ email, password });
       await this.navigateToHome();
     } catch (error) {
-      this.formGroup.setErrors({ error });
+      this.formGroup.controls.email.setErrors({ error });
+      this.formGroup.controls.password.setErrors({ error });
     }
 
     this.loading = false;
