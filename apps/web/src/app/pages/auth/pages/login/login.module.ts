@@ -11,11 +11,13 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { loginRoutes } from './login.routes';
 import { LoginComponent } from './login.component';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { LogoComponent } from '@co-app/frontend/ui';
 
 @NgModule({
   declarations: [LoginComponent],
   imports: [
     CommonModule,
+    LogoComponent,
     NzButtonModule,
     NzFormModule,
     NzInputModule,

@@ -11,11 +11,13 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { signUpRoutes } from './sign-up.routes';
 import { SignUpComponent } from './sign-up.component';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { LogoComponent } from '@co-app/frontend/ui';
 
 @NgModule({
   declarations: [SignUpComponent],
   imports: [
     CommonModule,
+    LogoComponent,
     NzButtonModule,
     NzFormModule,
     NzInputModule,

@@ -37,3 +37,9 @@ nz-page-header {
 nz-input-group {
   border-radius: 6px !important;
 }
+
+.ant-menu-title-content {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+}

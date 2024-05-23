@@ -1,4 +1,7 @@
 <nav *ngIf="user$ | async as user">
+  <div class="nav-items-start">
+    <co-app-logo [textVisible]="true" size="small"></co-app-logo>
+  </div>
   <div class="nav-items-end">
     <span nz-typography>
       {{ user.firstName + ' ' + user.lastName }}

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '@co-app/auth/frontend';
+import { LogoComponent } from '@co-app/frontend/ui';
 import { firstValueFrom, map } from 'rxjs';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
@@ -10,7 +11,13 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'co-app-header',
   standalone: true,
-  imports: [CommonModule, NzButtonModule, NzTypographyModule, TranslateModule],
+  imports: [
+    CommonModule,
+    LogoComponent,
+    NzButtonModule,
+    NzTypographyModule,
+    TranslateModule,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

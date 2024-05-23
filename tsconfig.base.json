@@ -19,6 +19,7 @@
       "@co-app/auth/backend": ["libs/auth/backend/src/index.ts"],
       "@co-app/auth/core": ["libs/auth/core/src/index.ts"],
       "@co-app/auth/frontend": ["libs/auth/frontend/src/index.ts"],
+      "@co-app/frontend/ui": ["libs/frontend/ui/src/index.ts"],
       "@co-app/members/frontend": ["libs/members/frontend/src/index.ts"],
       "@co-app/organizations/frontend": [
         "libs/organizations/frontend/src/index.ts"
