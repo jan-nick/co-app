@@ -13,7 +13,7 @@ Prototype for the Bachelor's thesis written by Jan Nicklas "Design and prototype
 Run `nx serve web`. Open your browser and navigate to http://localhost:4200/.
 
 ### Backend
-Run `nx serve backend`. The backend server will be served on http://localhost:4200/.
+Run `nx serve backend`. The backend server will be served on http://localhost:3333/.
 
 ## Setup Database
 
