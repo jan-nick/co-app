@@ -12,19 +12,8 @@ export const appRoutes: Route[] = [
   {
     path: 'login',
     loadChildren: () =>
-      import('./pages/auth/pages/login/login.module').then(
+      import('./pages/login/login.module').then(
         (m) => m.LoginModule
-      ),
-    canActivate: [SignedOutGuard],
-    data: {
-      redirectToOnDeactivate: 'home',
-    },
-  },
-  {
-    path: 'sign-up',
-    loadChildren: () =>
-      import('./pages/auth/pages/sign-up/sign-up.module').then(
-        (m) => m.SignUpModule
       ),
     canActivate: [SignedOutGuard],
     data: {

@@ -15,7 +15,7 @@ async function bootstrap() {
   const port = process.env.PORT || 3333;
 
   app.enableCors({
-    origin: environment.frontendUrl,
+    origin: [environment.webFrontendUrl, environment.mobileFrontendUrl],
   });
   app.setGlobalPrefix(globalPrefix);
   app.enableShutdownHooks();

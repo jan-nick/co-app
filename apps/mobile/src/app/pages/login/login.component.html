@@ -1,0 +1,53 @@
+<div class="container-centered">
+  <co-app-logo [textVisible]="true"></co-app-logo>
+
+  <p nz-typography nzType="secondary" class="mb-4">
+    {{ 'pages.login/sign_up.slogan' | translate }}
+  </p>
+  <form
+    nz-form
+    [formGroup]="formGroup"
+    class="login-form"
+    (ngSubmit)="submit($event)"
+  >
+    <nz-form-item>
+      <nz-form-control>
+        <nz-input-group nzPrefixIcon="user" nzSize="large">
+          <input
+            [placeholder]="'pages.login.email_input.placeholder' | translate"
+            type="text"
+            nz-input
+            formControlName="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <nz-input-group nzPrefixIcon="lock" nzSize="large">
+          <input
+            [placeholder]="'pages.login.password_input.placeholder' | translate"
+            type="password"
+            nz-input
+            formControlName="password"
+            placeholder="Password"
+            autocomplete="current-password"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <button
+      [nzBlock]="true"
+      [nzLoading]="loading"
+      nz-button
+      nzSize="large"
+      nzType="primary"
+    >
+      {{ 'pages.login.login_button' | translate }}
+    </button>
+  </form>
+</div>
