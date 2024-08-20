@@ -87,6 +87,7 @@ export class CreateVoteModalComponent implements OnInit {
     const { name, description, votingPeriod } = this.formGroup.value;
 
     if (
+      !organization ||
       !name ||
       !description ||
       !votingPeriod?.length ||

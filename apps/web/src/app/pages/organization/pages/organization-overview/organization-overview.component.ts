@@ -25,7 +25,7 @@ export class OrganizationOverviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.organization$.subscribe((organization) => {
-      this.bulletin = organization.bulletin || '';
+      this.bulletin = organization?.bulletin || '';
     });
   }
 

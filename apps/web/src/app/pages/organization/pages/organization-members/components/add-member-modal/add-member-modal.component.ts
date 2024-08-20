@@ -57,7 +57,7 @@ export class AddMemberModalComponent {
       this.organizationStoreService.organization$
     );
     const email = this.formGroup.value.email;
-    if (!email) return;
+    if (!email || !organization) return;
 
     await this.membersService.create({
       organizationId: organization.id,
